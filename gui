@@ -13,7 +13,7 @@ local PlaySound = game:GetService("ReplicatedStorage").PlaySound
 local mat = game:GetService("ReplicatedStorage").Mask
 local cha = game:GetService("ReplicatedStorage").Monitor
 local cp = game:GetService("ReplicatedStorage").ControlPanel
-local rdb = game.Workspace["Right Door Button"]
+local ws = game.Workspace
 local jumper = game.ReplicatedStorage.CallToJumpscare
 
 
@@ -52,9 +52,9 @@ local args = {
 
 PlaySound:FireServer(unpack(args))
 wait(5)
-if rdb.Closed.Value == false then
+if ws["Right Door Button"] and ws["Right Door Button"].Closed == false then
     bon:FireServer()
-elseif rdb.Closed.Value == true then
+else
 end
 end)
 
@@ -191,10 +191,3 @@ end)
 zfunc.addOption("Hallway Light", "liteFlag", false, function(lite)
     lchanger:FireServer(lite)
 end)
-
---anti door error cuz i hate door errors
-while wait(0.5) do
-    if gv["Door Error"] == true and gv["Night Guard"] == lp.Name then
-        changer:FireServer("Door Error",false)
-    end
-    end
