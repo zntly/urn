@@ -119,7 +119,7 @@ cerror.addOption("Light Error", "lightFlag", gv["Light Error"].Value, function(l
         end
 end)
 
-game.addToggle("Funtime Foxy Mania", "testerFlag", "Makes everyone Funtime Foxy, goes into effect next round", gv.TestMode.Value, function(tester)
+game.addToggle("Toy Foxy Mania", "testerFlag", "Makes everyone Toy Foxy, goes into effect next round", gv.TestMode.Value, function(tester)
    if tester ~= gv.TestMode.Value then
    changer:FireServer("TestMode", tester)
    end
