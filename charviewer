@@ -1,0 +1,124 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+repeat wait() until game:IsLoaded()
+local CharViewer = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Ex = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+CharViewer.Name = "CharViewer"
+CharViewer.Parent = game.CoreGui
+
+Frame.Parent = CharViewer
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.782775283, -150, 0.265854806, -150)
+Frame.Size = UDim2.new(0, 566, 0, 631)
+Frame.Visible = false
+
+Ex.Name = "Ex"
+Ex.Parent = Frame
+Ex.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Ex.BackgroundTransparency = 1.000
+Ex.Size = UDim2.new(0, 566, 0, 50)
+Ex.Visible = false
+Ex.Font = Enum.Font.SourceSansBold
+Ex.TextColor3 = Color3.fromRGB(255, 255, 255)
+Ex.TextScaled = true
+Ex.TextSize = 14.000
+Ex.TextWrapped = true
+
+TextButton.Parent = CharViewer
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.Position = UDim2.new(0.934402347, 0, 0.104584515, -25)
+TextButton.Size = UDim2.new(0, 90, 0, 50)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "Open"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+-- Scripts:
+
+local function BSQNYEZ_fake_script() -- Frame.Drag 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(BSQNYEZ_fake_script)()
+local function XMGBED_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+	    if script.Parent.Parent.Frame.Visible == false then
+	        script.Parent.Parent.Frame.Visible = true
+			script.Parent.Text = "Close"
+			local am = 0
+			for i,v in pairs(game.Workspace.Characters:GetChildren()) do
+				am = am + 1
+				if v.Value == false then
+					local sus = script.Parent.Parent.Frame.Ex:Clone()
+					sus.Parent = script.Parent.Parent.Frame
+					sus.Name = v.Name
+					sus.Text = v.Name
+					sus.Visible = true
+					sus.Position = UDim2.new(0, 0, ((am - 1)*0.079), 0)
+				elseif v.Value == true then
+					am = am - 1
+				end
+			end
+		
+		elseif script.Parent.Parent.Frame.Visible == true then
+			for i,v in pairs(script.Parent.Parent.Frame:GetChildren()) do
+				if v.ClassName == "TextLabel" and v.Name ~= "Ex" then
+					v:Destroy()
+				end	
+			end	
+			script.Parent.Parent.Frame.Visible = false
+			script.Parent.Text = "Open"
+			end
+	 end)
+end
+coroutine.wrap(XMGBED_fake_script)()
