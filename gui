@@ -58,7 +58,7 @@ PlaySound:FireServer(unpack(args))
 wait(5)
 if ftfred == 1 and ws["Right Door Button"] and ws["Right Door Button"].Closed.Value == false then
     bon:FireServer()
-elseif ftfred == 2 and ws["Left Door Button"] and ws["Left Door Button"].Closed.Value == false
+elseif ftfred == 2 and ws["Left Door Button"] and ws["Left Door Button"].Closed.Value == false then
     bon:FireServer()
 end
 end)
