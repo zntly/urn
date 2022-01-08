@@ -62,7 +62,7 @@ elseif ftfred == 2 and ws["Left Door Button"] and ws["Left Door Button"].Closed.
 end
 end)
 
-game.addToggle("Jumpscares", "derrFlag", "Automatically removes door errors", _G.antidoor, function(anti)
+game.addToggle("Anti Door Error", "derrFlag", "Automatically removes door errors if you are the Night Guard", _G.antidoor, function(anti)
 _G.antidoor = anti
 while _G.antidoor do
     if gv["Door Error"] == true and gv["Night Guard"] == lp.Name then
