@@ -1,3 +1,4 @@
+_G.antidoor = false
 local lp = game.Players.LocalPlayer
 local Win11Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Skribb11es/Win11UILib/main/main.lua", true))()
 local changer = game.ReplicatedStorage.ChangeGameValue
@@ -59,6 +60,16 @@ if ftfred == 1 and ws["Right Door Button"] and ws["Right Door Button"].Closed.Va
 elseif ftfred == 2 and ws["Left Door Button"] and ws["Left Door Button"].Closed.Value == false then
     bon:FireServer()
 end
+end)
+
+game.addToggle("Jumpscares", "derrFlag", "Automatically removes door errors", _G.antidoor, function(anti)
+_G.antidoor = anti
+while _G.antidoor do
+    if gv["Door Error"] == true and gv["Night Guard"] == lp.Name then
+        changer:FireServer("Door Error",false)
+    end
+    task.wait()
+    end
 end)
 
 game.addToggle("Jumpscares", "jFlag", "Toggles if jumpscares kill or not, breaks features like doors when off", nip.Value, function(j)
@@ -194,10 +205,3 @@ end)
 zfunc.addOption("Hallway Light", "liteFlag", false, function(lite)
     lchanger:FireServer(lite)
 end)
-
---anti door error cuz i hate door errors
-while wait(0.5) do
-    if gv["Door Error"] == true and gv["Night Guard"] == lp.Name then
-        changer:FireServer("Door Error",false)
-    end
-    end
