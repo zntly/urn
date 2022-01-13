@@ -18,6 +18,7 @@ local cp = game:GetService("ReplicatedStorage").ControlPanel
 local ws = game.Workspace
 local jumper = game.ReplicatedStorage.CallToJumpscare
 local ftfred = "among us"
+local buildsuit = game:GetService("ReplicatedStorage").BuildSuit
 
 
 local game = menu.addTab("Game", "gameFlag", true, "7059346386")
@@ -365,7 +366,7 @@ game.addButton("Become Animatronic", "Makes you look like the animatronic you se
     [2] = _G.selected
 }
 
-game:GetService("ReplicatedStorage").BuildSuit:FireServer(unpack(args))
+buildsuit:FireServer(unpack(args))
 end)
 
 game.addToggle("Animatronic Mania", "testerFlag", "Makes everyone the animatronic you select, goes into effect next round", gv.TestModeEnabled.Value, function(tester)
