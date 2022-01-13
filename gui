@@ -64,12 +64,14 @@ end
 end)
 
 game.addToggle("Anti Door Error", "derrFlag", "Automatically removes door errors if you are the Night Guard", _G.antidoor, function(anti)
+if _G.antidoor ~= anti then
 _G.antidoor = anti
 while _G.antidoor do
     if gv["Door Error"] == true and gv["Night Guard"] == lp.Name then
         changer:FireServer("Door Error",false)
     end
     task.wait()
+    end
     end
 end)
 
