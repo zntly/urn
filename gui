@@ -339,7 +339,7 @@ end)
 
 animselect.addOption("Afton/Scraptrap", "alwayscomesbackFlag", false, function(x)
         if x == true then
-        _G.selected = "Elizabeth"
+        _G.selected = "Afton"
         end
 end)
 
