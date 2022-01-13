@@ -19,6 +19,7 @@ local ws = game.Workspace
 local jumper = game.ReplicatedStorage.CallToJumpscare
 local ftfred = "among us"
 local buildsuit = game:GetService("ReplicatedStorage").BuildSuit
+local rep = game:GetService("ReplicatedStorage")
 
 
 local game = menu.addTab("Game", "gameFlag", true, "7059346386")
@@ -362,7 +363,7 @@ end)
 
 game.addButton("Become Animatronic", "Makes you look like the animatronic you selected, VISUAL ONLY, replicates", function()
         local argsa = {
-    [1] = game:GetService("ReplicatedStorage"):FindFirstChild(_G.selected),
+    [1] = rep:FindFirstChild(_G.selected),
     [2] = _G.selected
 }
 
