@@ -367,7 +367,7 @@ game.addButton("Become Animatronic", "Makes you look like the animatronic you se
     [2] = _G.selected
 }
 
-buildsuit:FireServer(unpack(args))
+buildsuit:FireServer(unpack(argsa))
 end)
 
 game.addToggle("Animatronic Mania", "testerFlag", "Makes everyone the animatronic you select, goes into effect next round", gv.TestModeEnabled.Value, function(tester)
