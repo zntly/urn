@@ -1,4 +1,5 @@
 _G.antidoor = false
+_G.selected = "sus"
 local lp = game.Players.LocalPlayer
 local Win11Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Skribb11es/Win11UILib/main/main.lua", true))()
 local changer = game.ReplicatedStorage.ChangeGameValue
@@ -133,9 +134,242 @@ cerror.addOption("Light Error", "lightFlag", gv["Light Error"].Value, function(l
         end
 end)
 
-game.addToggle("Toy Foxy Mania", "testerFlag", "Makes everyone Toy Foxy, goes into effect next round", gv.TestMode.Value, function(tester)
-   if tester ~= gv.TestMode.Value then
-   changer:FireServer("TestMode", tester)
+local animselect = game.addDropdown("Animatronics", "Select an animatronic for various uses")
+animselect.addOption("Freddy", "fredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Freddy"
+        end
+end)
+
+animselect.addOption("Bonnie", "bonFlag", false, function(x)
+        if x == true then
+        _G.selected = "Bonnie"
+        end
+end)
+
+animselect.addOption("Chica", "chicaFlag", false, function(x)
+        if x == true then
+        _G.selected = "Chica"
+        end
+end)
+
+animselect.addOption("Foxy", "foxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Foxy"
+        end
+end)
+
+animselect.addOption("Toy Freddy", "tfredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Toy Freddy"
+        end
+end)
+
+animselect.addOption("Toy Bonnie", "tbonFlag", false, function(x)
+        if x == true then
+        _G.selected = "Toy Bonnie"
+        end
+end)
+
+animselect.addOption("Toy Chica", "tchicaFlag", false, function(x)
+        if x == true then
+        _G.selected = "Toy Chica"
+        end
+end)
+
+animselect.addOption("Toy Foxy (Not Mangle)", "tfoxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Toy Foxy"
+        end
+end)
+
+animselect.addOption("BB", "bbFlag", false, function(x)
+        if x == true then
+        _G.selected = "BB"
+        end
+end)
+
+animselect.addOption("JJ", "jjFlag", false, function(x)
+        if x == true then
+        _G.selected = "JJ"
+        end
+end)
+
+animselect.addOption("Mangle (Is Mangle)", "mangFlag", false, function(x)
+        if x == true then
+        _G.selected = "Mangle"
+        end
+end)
+
+animselect.addOption("Withered Freddy", "wfredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Withered Freddy"
+        end
+end)
+
+animselect.addOption("Withered Bonnie", "wbonFlag", false, function(x)
+        if x == true then
+        _G.selected = "Withered Bonnie"
+        end
+end)
+
+animselect.addOption("Withered Chica", "wchicaFlag", false, function(x)
+        if x == true then
+        _G.selected = "Withered Chica"
+        end
+end)
+
+animselect.addOption("Withered Foxy", "wfoxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Withered Foxy"
+        end
+end)
+
+animselect.addOption("Golden Freddy", "gfredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Golden Freddy"
+        end
+end)
+
+animselect.addOption("Puppet/Marionette", "pupFlag", false, function(x)
+        if x == true then
+        _G.selected = "Marionette"
+        end
+end)
+
+animselect.addOption("Phantom Freddy", "pfredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom Freddy"
+        end
+end)
+
+animselect.addOption("Phantom Chica", "pchicaFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom Chica"
+        end
+end)
+
+animselect.addOption("Phantom Foxy", "pfoxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom Foxy"
+        end
+end)
+
+animselect.addOption("Phantom Mangle", "pmangFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom Mangle"
+        end
+end)
+
+animselect.addOption("Phantom BB", "pbbFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom BB"
+        end
+end)
+
+animselect.addOption("Phantom Puppet/Phantom Marionette", "ppupFlag", false, function(x)
+        if x == true then
+        _G.selected = "Phantom Marionette"
+        end
+end)
+
+animselect.addOption("Springtrap", "springFlag", false, function(x)
+        if x == true then
+        _G.selected = "Springtrap"
+        end
+end)
+
+animselect.addOption("Nightmare Bonnie", "nbonFlag", false, function(x)
+        if x == true then
+        _G.selected = "Nightmare Bonnie"
+        end
+end)
+
+animselect.addOption("Nightmare Foxy", "nfoxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Nightmare Foxy"
+        end
+end)
+
+animselect.addOption("Nightmare Fredbear", "nfbearFlag", false, function(x)
+        if x == true then
+        _G.selected = "Nightmare Fredbear"
+        end
+end)
+
+animselect.addOption("Nightmare", "nmFlag", false, function(x)
+        if x == true then
+        _G.selected = "Nightmare"
+        end
+end)
+
+animselect.addOption("Nightmare BB", "nbbFlag", false, function(x)
+        if x == true then
+        _G.selected = "Nightmare BB"
+        end
+end)
+
+animselect.addOption("Funtime Freddy", "ftfredFlag", false, function(x)
+        if x == true then
+        _G.selected = "Funtime Freddy"
+        end
+end)
+
+animselect.addOption("Funtime Foxy", "ftfoxFlag", false, function(x)
+        if x == true then
+        _G.selected = "Funtime Foxy"
+        end
+end)
+
+animselect.addOption("Circus Baby", "BABAYFlag", false, function(x)
+        if x == true then
+        _G.selected = "Circus Baby"
+        end
+end)
+
+animselect.addOption("Ennard", "spaghettiFlag", false, function(x)
+        if x == true then
+        _G.selected = "Ennard"
+        end
+end)
+
+animselect.addOption("Afton/Scraptrap", "alwayscomesbackFlag", false, function(x)
+        if x == true then
+        _G.selected = "Elizabeth"
+        end
+end)
+
+animselect.addOption("Elizabeth/Scrap Baby", "sBABAYFlag", false, function(x)
+        if x == true then
+        _G.selected = "Elizabeth"
+        end
+end)
+
+animselect.addOption("Molten Freddy", "moltspaghetFlag", false, function(x)
+        if x == true then
+        _G.selected = "Molten Freddy"
+        end
+end)
+
+animselect.addOption("Lefty", "rightyFlag", false, function(x)
+        if x == true then
+        _G.selected = "Lefty"
+        end
+end)
+
+game.addButton("Become Animatronic", "Makes you look like the animatronic you selected, VISUAL ONLY, replicates", function()
+        local argsa = {
+    [1] = game:GetService("ReplicatedStorage"):FindFirstChild(_G.selected),
+    [2] = _G.selected
+}
+
+game:GetService("ReplicatedStorage").BuildSuit:FireServer(unpack(args))
+end)
+
+game.addToggle("Animatronic Mania", "testerFlag", "Makes everyone the animatronic you select, goes into effect next round", gv.TestModeEnabled.Value, function(tester)
+   if tester ~= gv.TestModeEnabled.Value then
+   changer:FireServer("TestModeEnabled", tester)
+   changer:FireServer("TestModeCharacter", _G.selected)
    end
 end)
 
